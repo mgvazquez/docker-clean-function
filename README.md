@@ -36,6 +36,8 @@ function docker-clean(){
          '' ) echo "ERROR: You must use all/dangling/<id>/<name> as second parameter";;
           * ) local _PARAMS_=( ${_ID_} ) ;;
     esac
+    
+    [[ -z "${_PARAMS_}" ]] && return 0
 
     for item in ${_PARAMS_[*]}; do
         eval "${_COMMAND_} ${item}"
