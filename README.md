@@ -16,7 +16,7 @@ function docker-clean(){
     case ${_ELEMENT_} in
  containers ) local _COMMAND_="docker rm -f" ;;
      images ) local _COMMAND_="docker rmi -f" ;;
-     volume ) local _COMMAND_="docker volume rm" ;;
+    volumes ) local _COMMAND_="docker volume rm" ;;
           * ) echo "ERROR: You must use images/containers/volumes as first parameter"
     esac
 
@@ -24,13 +24,13 @@ function docker-clean(){
         all ) case ${_ELEMENT_} in
      containers ) local _PARAMS_=( $(docker ps -qa) ) ;;
          images ) local _PARAMS_=( $(docker images -q) ) ;;
-         volume ) local _PARAMS_=( $(docker volume ls -q) ) ;;
+        volumes ) local _PARAMS_=( $(docker volume ls -q) ) ;;
               esac
              ;;
    dangling ) case ${_ELEMENT_} in
      containers ) local _PARAMS_=( $(docker ps -qa --filter 'status=exited' --filter 'status=created') ) ;;
          images ) local _PARAMS_=( $(docker images -q --filter "dangling=true") ) ;;
-         volume ) local _PARAMS_=( $(docker volume ls -q --filter 'dangling=true') ) ;;
+        volumes ) local _PARAMS_=( $(docker volume ls -q --filter 'dangling=true') ) ;;
               esac
              ;;
          '' ) echo "ERROR: You must use all/dangling/<id>/<name> as second parameter";;
