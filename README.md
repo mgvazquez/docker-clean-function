@@ -1,3 +1,9 @@
+# DEPRECADO
+
+Por favor utilizar el comando 'prune' del docker-cli
+
+---
+
 # Shell function to clean docker stuff
 
 La siguiente es una funcion 'shell' que agrupa varias funcionalidades para limpiar elementos remanentes de ejecuciones de docker.
